@@ -1,8 +1,6 @@
 package code
 
 import (
-	"fmt"
-	
 	"grab_parking/helper/api"
 )
 
@@ -10,7 +8,6 @@ import (
 var message map[api.ResponseType]string
 
 func init() {
-	fmt.Println(12312312312)
 	message = make(map[api.ResponseType]string)
 	message[DEMO_DATA_ADD_Had] = "数据操作失败，记录已存在"
 	// message[DEMO_DATA_ID_NIL] = "数据操作失败，记录不存在"

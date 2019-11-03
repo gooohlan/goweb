@@ -30,6 +30,7 @@ func LogicMask(c api.ResponseType) (ae *api.APIError) {
 
 // LogicMaskrWitdhCode 自定义逻辑错误码 code：90000 msg: [code]+code对应的信息
 func LogicMaskrWitdhCode(c api.ResponseType) (ae *api.APIError) {
+	// log部分待写
 	return api.NewAPIError(code.MsgWithCode(c), api.ResponseError)
 }
 
