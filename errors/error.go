@@ -44,4 +44,7 @@ func LogicWithCode(c api.ResponseType) (ae *api.APIError) {
 	return api.NewAPIError(code.MsgWithCode(c), c)
 }
 
-	
+// LoginAdd 错误信息追加 "添加出错" +err
+func LoginAdd(c api.ResponseType, appendString string) (ae *api.APIError) {
+	return api.NewAPIError(code.MsgAppend(c, appendString), c)
+}
