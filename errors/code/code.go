@@ -2,7 +2,7 @@ package code
 
 import (
 	"fmt"
-	
+
 	"grab_parking/helper/api"
 )
 
@@ -29,4 +29,12 @@ func MsgWithCode(c api.ResponseType) string {
 
 	return "[90000]未知错误"
 }
-	
+
+// 错误预设+追加
+func MsgAppend(c api.ResponseType, appendStr string) string {
+	if v, ok := message[c]; ok {
+		return v + appendStr
+	}
+
+	return appendStr
+}
