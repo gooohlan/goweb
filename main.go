@@ -1,7 +1,7 @@
 package main
 
 import (
-	"grab_parking/router"
+	"goweb/router"
 )
 
 func main() {

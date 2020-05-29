@@ -1,9 +1,8 @@
 package code
 
 import (
-	"grab_parking/helper/api"
+	"goweb/helper/api"
 )
-
 
 var message map[api.ResponseType]string
 
@@ -28,5 +27,3 @@ const (
 
 	//to do
 )
-
-	
