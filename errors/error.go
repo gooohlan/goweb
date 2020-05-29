@@ -1,8 +1,8 @@
 package errors
 
 import (
-	"grab_parking/errors/code"
-	"grab_parking/helper/api"
+	"goweb/errors/code"
+	"goweb/helper/api"
 )
 
 /***** 90000,90500 用下面的方法 *****/
