@@ -63,5 +63,6 @@ func (a API) SetDataKV(c *gin.Context, key string, value interface{}) {
 		a.result.dataKV = make(map[string]interface{})
 	}
 	a.result.dataKV[key] = value
+	a.result.Data = a.result.dataKV
 	a.Return(c)
 }
