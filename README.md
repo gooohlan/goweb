@@ -11,6 +11,11 @@
 - router 路由
 - service 业务逻辑相关
 
+# 验证器
+- 自定义验证规则在`vali/validator`下,参考checkMobile
+- controller下使用验证器,调用`api.API.ParseRequest`
+
+
 # 自定义返回码
 
 在errors -> code -> table 中 设置对应Code和Msg
