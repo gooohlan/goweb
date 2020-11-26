@@ -20,5 +20,8 @@ const (
 	
 	// 响应异常
 	ResponseCrash ResponseType = 90500
+
+	// 前端数据格式错误
+	ResponseRequest ResponseType = 90900
 )
 
