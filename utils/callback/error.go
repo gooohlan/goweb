@@ -1,4 +1,4 @@
-package api
+package callback
 
 import (
 	"fmt"
@@ -13,8 +13,13 @@ type APIError struct {
 	data interface{}
 }
 
+// type error interface {
+// 	Error() string
+// }
+
 // Error 实现error接口
 func (e *APIError) Error() string {
+	// myerror.Is()
 	return e.msg
 }
 
@@ -29,15 +34,15 @@ func (e *APIError) Data() interface{} {
 }
 
 // NewAPIError API错误，默认code:RESPONSE_ERROR
-func NewAPIError(msg string, code ...ResponseType) *APIError{
+func NewAPIError(msg string, code ...ResponseType) *APIError {
 	c := ResponseError
-	if len(code) == 1{
+	if len(code) == 1 {
 		c = code[0]
 	}
 	return &APIError{
 		code: c,
 		msg:  msg,
-		data: struct {}{},
+		data: struct{}{},
 	}
 }
 
@@ -47,11 +52,11 @@ func NewAPIErrorWithData(msg string, data interface{}, code ...ResponseType) *AP
 	if len(code) == 1 {
 		c = code[0]
 	}
-	
+
 	if data == nil {
 		data = struct{}{}
 	}
-	
+
 	return &APIError{
 		code: c,
 		msg:  msg,
@@ -62,15 +67,15 @@ func NewAPIErrorWithData(msg string, data interface{}, code ...ResponseType) *AP
 // NewAPIErrorWithLog 创建API错误对象，转化为友好提示并记录日志，默认code：RESPONSE_CRASH
 func NewAPIErrorWithLog(title, rawMsg string, code ...ResponseType) *APIError {
 	errCode := strconv.FormatInt(time.Now().Unix(), 10)
-	
+
 	data := make(map[string]string, 1)
 	data["errCode"] = errCode
-	
+
 	c := ResponseCrash
 	if len(code) == 1 {
 		c = code[0]
 	}
-	
+
 	return &APIError{
 		code: c,
 		msg:  fmt.Sprintf("请求发生错误[%s]，请联系技术人员", errCode),

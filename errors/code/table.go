@@ -1,13 +1,13 @@
 package code
 
 import (
-	"goweb/helper/api"
+	"goweb/utils/callback"
 )
 
-var message map[api.ResponseType]string
+var message map[callback.ResponseType]string
 
 func init() {
-	message = make(map[api.ResponseType]string)
+	message = make(map[callback.ResponseType]string)
 	message[DEMO_DATA_ADD_Had] = "数据操作失败，记录已存在"
 	// message[DEMO_DATA_ID_NIL] = "数据操作失败，记录不存在"
 
@@ -22,7 +22,7 @@ func init() {
 */
 const (
 	// DEMO_DATA_ADD_Had 添加数据数据，记录已存在 （参考第2-3位 01 代表对应的功能）
-	DEMO_DATA_ADD_Had api.ResponseType = 10100
+	DEMO_DATA_ADD_Had callback.ResponseType = 10100
 	// DEMO_DATA_ID_NIL  apiconstant.ResponseType = 10101
 
 	//to do

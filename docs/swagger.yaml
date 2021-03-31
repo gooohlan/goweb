@@ -1,0 +1,90 @@
+definitions:
+  controller.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      data:
+        type: object
+      msg:
+        example: status bad request
+        type: string
+    type: object
+  controller.HTTPOk:
+    properties:
+      code:
+        example: 0
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+  controller.TagData:
+    properties:
+      id:
+        example: 1
+        type: integer
+      name:
+        example: 测试
+        type: string
+    type: object
+host: localhost:8088
+info:
+  contact: {}
+  description: 这是一个Swagger文档生成测试
+  title: Swagger 生成文档测试
+  version: "1.0"
+paths:
+  /tag:
+    get:
+      consumes:
+      - application/json
+      description: 通过id获取标签
+      operationId: get-string-by-int
+      parameters:
+      - description: 标签id
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.TagData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.HTTPError'
+      summary: 获取标签
+      tags:
+      - Tag
+    post:
+      consumes:
+      - application/json
+      description: 添加标签
+      parameters:
+      - description: 标签内容
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/controller.TagData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.HTTPOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.HTTPError'
+      summary: 添加标签
+      tags:
+      - Tag
+swagger: "2.0"

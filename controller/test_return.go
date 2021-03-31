@@ -5,16 +5,15 @@ import (
 
 	"goweb/errors"
 	"goweb/errors/code"
-	"goweb/helper/api"
+	"goweb/utils/callback"
 )
 
 var TestReturn testReturn
 
 type testReturn struct {
-
 }
 
-var API api.API
+var API callback.CallbackData
 
 func (t *testReturn) Hello(c *gin.Context) {
 	err := errors.LogicWithCode(code.DEMO_DATA_ADD_Had)
@@ -24,7 +23,7 @@ func (t *testReturn) Hello(c *gin.Context) {
 func (t *testReturn) Registered(c *gin.Context) {
 	type User struct {
 		Name string
-		Age int
+		Age  int
 	}
 	qry := new(User)
 	// 使用验证器验证数据格式
