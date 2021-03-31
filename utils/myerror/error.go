@@ -1,8 +1,8 @@
-package errors
+package myerror
 
 import (
-	"goweb/errors/code"
 	"goweb/utils/callback"
+	"goweb/utils/myerror/code"
 )
 
 /***** 90000,90500 用下面的方法 *****/
@@ -44,7 +44,7 @@ func LogicWithCode(c callback.ResponseType) (ae *callback.APIError) {
 	return callback.NewAPIError(code.MsgWithCode(c), c)
 }
 
-// LoginAdd 错误信息追加 "添加出错" +err
-func LoginAdd(c callback.ResponseType, appendString string) (ae *callback.APIError) {
+// LocallbackAdd 错误信息追加 "添加出错" +err
+func LocallbackAdd(c callback.ResponseType, appendString string) (ae *callback.APIError) {
 	return callback.NewAPIError(code.MsgAppend(c, appendString), c)
 }
