@@ -16,7 +16,6 @@ func Msg(c callback.ResponseType) string {
 	if v, ok := message[c]; ok {
 		return v
 	}
-
 	return ""
 }
 

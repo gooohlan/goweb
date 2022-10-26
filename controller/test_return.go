@@ -16,7 +16,8 @@ type testReturn struct {
 var API callback.CallbackData
 
 func (t *testReturn) Hello(c *gin.Context) {
-	err := errors.LogicWithCode(code.DEMO_DATA_ADD_Had)
+	err := errors.New("123")
+	err = errors.LogicWithCode(code.DEMO_DATA_ADD_Had)
 	API.SetError(c, err)
 }
 
