@@ -1,22 +1,23 @@
 package db
 
 import (
-	"fmt"
-	"goweb/conf"
-
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+    "fmt"
+    
+    "goweb/conf"
+    
+    "gorm.io/driver/mysql"
+    "gorm.io/gorm"
 )
 
 // NewDatabase 返回一个新的数据库客户端连接
 func NewDatabase(conf *conf.Mysql) (*gorm.DB, error) {
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local", conf.Username, conf.Password, conf.Host, conf.Port, conf.Name, conf.Charset)
-	dialector := mysql.Open(dsn)
-	db, err := gorm.Open(dialector, &gorm.Config{})
-	if err != nil {
-		return nil, err
-	}
-	return db, nil
+    dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local", conf.Username, conf.Password, conf.Host, conf.Port, conf.Name, conf.Charset)
+    dialector := mysql.Open(dsn)
+    db, err := gorm.Open(dialector, &gorm.Config{})
+    if err != nil {
+        return nil, err
+    }
+    return db, nil
 }
 
 // InitDatabase 初始化了数据库
