@@ -1,11 +1,11 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
-
-	"goweb/errors"
-	"goweb/errors/code"
-	"goweb/utils/callback"
+    "github.com/gin-gonic/gin"
+    
+    "goweb/errors"
+    "goweb/errors/code"
+    "goweb/utils/callback"
 )
 
 var TestReturn testReturn
@@ -13,23 +13,23 @@ var TestReturn testReturn
 type testReturn struct {
 }
 
-var API callback.CallbackData
+var API callback.ApiResult
 
 func (t *testReturn) Hello(c *gin.Context) {
-	err := errors.New("123")
-	err = errors.LogicWithCode(code.DEMO_DATA_ADD_Had)
-	API.SetError(c, err)
+    err := errors.New("123")
+    err = errors.LogicWithCode(code.DEMO_DATA_ADD_Had)
+    API.SetError(c, err)
 }
 
 func (t *testReturn) Registered(c *gin.Context) {
-	type User struct {
-		Name string
-		Age  int
-	}
-	qry := new(User)
-	// 使用验证器验证数据格式
-	if err := API.ParseRequest(c, qry); err != nil {
-		return
-	}
-	return
+    type User struct {
+        Name string
+        Age  int
+    }
+    qry := new(User)
+    // 使用验证器验证数据格式
+    if err := API.ParseRequest(c, qry); err != nil {
+        return
+    }
+    return
 }
