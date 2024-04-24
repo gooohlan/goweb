@@ -4,6 +4,7 @@ import (
     "crypto/md5"
     "encoding/json"
     "fmt"
+    "math"
     "strconv"
     "time"
     
@@ -40,4 +41,13 @@ func InterfaceToStruct(data, res interface{}) error {
         return errors.New("解析参数失败", 400)
     }
     return nil
+}
+
+// float64保留N为小数
+func RetainDecimalNum(num float64, precisionList ...int) float64 {
+    precision := 4
+    if len(precisionList) != 0 {
+        precision = precisionList[0]
+    }
+    return math.Round(num*math.Pow10(precision)) / math.Pow10(precision)
 }
