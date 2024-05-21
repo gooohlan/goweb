@@ -51,3 +51,31 @@ func RetainDecimalNum(num float64, precisionList ...int) float64 {
     }
     return math.Round(num*math.Pow10(precision)) / math.Pow10(precision)
 }
+
+// SetBit 设置第N位为1,从右往左数
+// 34, 3 => 38(100010, 100110)
+// 34, 2 => 34(100010, 100010)
+func SetBit(num, n int) int {
+    return num | (1 << (n - 1))
+}
+
+// IsOne 判断第N位是否为1, 从右往左数
+// 34, 3 => false 100010
+// 35, 1 => true  100011
+func IsOne(num int, n int) bool {
+    return GetBit(num, n) == 1
+}
+
+// IsOne 判断第N位是否为0, 从右往左数
+// 34, 3 => true 100010
+// 35, 1 => false  100011
+func IsZero(num int, n int) bool {
+    return GetBit(num, n) == 0
+}
+
+// GetBit 获取第n位的值
+// 34, 3 => 0 100010
+// 35, 1 => 1 100011
+func GetBit(num int, n int) int {
+    return (num >> (n - 1)) & 1
+}
