@@ -2,10 +2,11 @@ package utils
 
 import (
     "crypto/md5"
+    "encoding/hex"
     "encoding/json"
-    "fmt"
     "math"
     "strconv"
+    "strings"
     "time"
     
     "goweb/errors"
@@ -22,11 +23,6 @@ func AddMonth(thisTime time.Time, duration int) time.Time {
     newTimeStr := strconv.Itoa(year) + "-" + strconv.Itoa(month) + thisTimeStr[7:]
     newTime, _ := time.Parse("2006-1-2 15:4:5", newTimeStr)
     return newTime
-}
-
-func Md5(original string) string {
-    data := []byte(original)
-    return fmt.Sprintf("%x", md5.Sum(data))
 }
 
 // 解析参数
@@ -78,4 +74,23 @@ func IsZero(num int, n int) bool {
 // 35, 1 => 1 100011
 func GetBit(num int, n int) int {
     return (num >> (n - 1)) & 1
+}
+
+func Md5(str string, bit ...int) string {
+    b := []byte(str)
+    h := md5.New()
+    h.Write(b)
+    hash := h.Sum(nil)
+    
+    hashString := hex.EncodeToString(hash)
+    // 16位md5
+    if len(bit) == 1 && bit[0] == 16 {
+        hashString = hashString[8:24]
+    }
+    
+    return hashString
+}
+
+func Md5ToUpper(str string, bit ...int) string {
+    return strings.ToUpper(Md5(str, bit...))
 }
